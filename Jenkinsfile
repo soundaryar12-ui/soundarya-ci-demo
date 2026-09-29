@@ -1,3 +1,4 @@
+```groovy
 pipeline {
 
     agent any
@@ -24,7 +25,9 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube-Server') {
-                    sh 'mvn sonar:sonar -Dsonar.projectKey=soundarya-ci-demo'
+                    withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
+                        sh 'mvn sonar:sonar -Dsonar.projectKey=soundarya-ci-demo -Dsonar.token=$SONAR_TOKEN'
+                    }
                 }
             }
         }
@@ -50,3 +53,5 @@ pipeline {
         }
     }
 }
+```
+
