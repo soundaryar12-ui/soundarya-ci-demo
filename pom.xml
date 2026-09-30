@@ -10,6 +10,13 @@
     <artifactId>soundarya-ci-demo</artifactId>
     <version>1.0.0</version>
 
+    <distributionManagement>
+        <repository>
+            <id>nexus</id>
+            <url>http://18.188.99.138:8081/repository/soundarya-maven-releases/</url>
+        </repository>
+    </distributionManagement>
+
     <properties>
         <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -57,5 +64,7 @@
     </build>
 
 </project>
+
+
 
 
