@@ -51,6 +51,36 @@ pipeline {
                 sh 'mvn package -DskipTests'
             }
         }
+
+        stage('Publish to Nexus') {
+            steps {
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: 'nexus-credentials',
+                        usernameVariable: 'NEXUS_USERNAME',
+                        passwordVariable: 'NEXUS_PASSWORD'
+                    )
+                ]) {
+                    sh '''
+                        mkdir -p ~/.m2
+
+                        cat > ~/.m2/settings.xml <<EOF
+<settings>
+    <servers>
+        <server>
+            <id>nexus</id>
+            <username>${NEXUS_USERNAME}</username>
+            <password>${NEXUS_PASSWORD}</password>
+        </server>
+    </servers>
+</settings>
+EOF
+
+                        mvn deploy -DskipTests
+                    '''
+                }
+            }
+        }
     }
 }
 
