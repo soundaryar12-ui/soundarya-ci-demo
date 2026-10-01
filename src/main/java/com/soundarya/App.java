@@ -12,7 +12,6 @@ public class App {
     }
 
     public static void main(String[] args) {
-        int unusedVariable = 100;
 
         App app = new App();
 
