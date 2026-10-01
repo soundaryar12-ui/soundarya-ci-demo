@@ -1,3 +1,4 @@
+
 package com.soundarya;
 
 import org.junit.jupiter.api.Test;
@@ -19,4 +20,11 @@ public class AppTest {
 
         assertEquals("Hello Soundarya", app.greet("Soundarya"));
     }
+
+    @Test
+    public void testMain() {
+        App.main(new String[]{});
+    }
 }
+
+
