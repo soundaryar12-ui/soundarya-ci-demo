@@ -1,3 +1,4 @@
+
 package com.soundarya;
 
 public class App {
@@ -11,9 +12,12 @@ public class App {
     }
 
     public static void main(String[] args) {
+        int unusedVariable = 100;
+
         App app = new App();
 
         System.out.println(app.greet("Soundarya"));
         System.out.println("Addition: " + app.add(10, 20));
     }
 }
+
