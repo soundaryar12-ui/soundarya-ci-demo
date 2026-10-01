@@ -23,8 +23,15 @@ public class AppTest {
 
     @Test
     public void testMain() {
+        App app = new App();
+
+        assertEquals("Hello Soundarya", app.greet("Soundarya"));
+        assertEquals(30, app.add(10, 20));
+
         App.main(new String[]{});
     }
 }
+
+
 
 
